@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Job Management</title>
+
+<style>
+
+/* LIGHT THEME VARIABLES */
+:root{
+    --bg:#eef8f9;
+    --panel:#ffffff;
+    --muted:#6b7280;
+    --accent:#0b9f66;
+    --red:#dc2626;
+    --shadow:0 6px 18px rgba(15,23,42,0.08);
+    --text:#0f172a;
+}
+
+/* DARK MODE VARIABLES */
+body.dark{
+    --bg:#0d1117;
+    --panel:#161b22;
+    --muted:#9ca3af;
+    --accent:#22c55e;
+    --red:#ef4444;
+    --text:#e5e7eb;
+    --shadow:0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* GLOBAL */
+body{
+    margin:0;
+    font-family:Inter, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.3s;
+}
+
+/* LAYOUT */
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:230px;
+    background:var(--panel);
+    margin:18px;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.brand img{
+    width:46px;
+    height:46px;
+    border-radius:6px;
+}
+.brand div{
+    font-size:13px;
+    font-weight:700;
+}
+.sub{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* SIDEBAR BUTTONS */
+.nav .item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin-top:8px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.2s;
+}
+.nav .item:hover{
+    background:#dff3ee;
+}
+body.dark .nav .item:hover{
+    background:#1f2937;
+}
+.nav .active{
+    background:#e6f7f2;
+    color:var(--accent);
+}
+body.dark .nav .active{
+    background:#1a2e22;
+    color:#22c55e;
+}
+
+/* CHAT BOX */
+.chat{
+    margin-top:20px;
+    background:var(--panel);
+    padding:14px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+.chat button{
+    margin-top:10px;
+    width:100%;
+    background:var(--accent);
+    color:white;
+    border:none;
+    padding:10px;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* MAIN */
+.main{
+    flex:1;
+    padding:28px;
+    margin:18px 18px 18px 0;
+}
+
+/* TOP BAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.search{
+    display:flex;
+    align-items:center;
+    background:var(--panel);
+    padding:10px 14px;
+    border-radius:12px;
+    min-width:300px;
+    box-shadow:var(--shadow);
+}
+.search input{
+    border:none;outline:none;background:transparent;width:100%;color:var(--text);
+}
+
+.icon-btn{
+    background:var(--panel);
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    position:relative;
+}
+.dot{
+    position:absolute;
+    top:6px;right:6px;
+    width:8px;height:8px;
+    background:red;
+    border-radius:50%;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* DARK MODE TOGGLE */
+.toggle-dark{
+    background:var(--panel);
+    padding:8px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+    font-weight:600;
+}
+
+/* PAGE TITLE */
+h1{
+    margin-top:20px;
+    font-size:26px;
+}
+.subtitle{
+    margin-top:6px;
+    color:var(--muted);
+}
+
+/* TABS */
+.tabs{
+    display:flex;
+    gap:22px;
+    margin-top:28px;
+    border-bottom:2px solid #dce4e4;
+    padding-bottom:10px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+.tab-active{
+    color:#16a34a;
+    border-bottom:3px solid #16a34a;
+    padding-bottom:9px;
+}
+
+/* JOB BOX */
+.details-box{
+    background:var(--panel);
+    margin-top:20px;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+}
+.label{
+    color:var(--muted);
+    font-size:13px;
+}
+.value{
+    font-weight:700;
+    font-size:15px;
+}
+
+/* ACTIONS */
+.actions{
+    margin-top:22px;
+    display:flex;
+    gap:22px;
+}
+
+.action-box{
+    flex:1;
+    background:var(--panel);
+    padding:22px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+}
+.action-box a{
+    display:block;
+    margin-top:10px;
+    color:var(--accent);
+    font-weight:700;
+    text-decoration:none;
+}
+
+/* QUIT BOX */
+.quit-box{
+    width:260px;
+    background:#feecec;
+    border:1px solid #f87171;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+}
+.quit-box h3{
+    margin:0;
+    color:#b91c1c;
+}
+.quit-box p{
+    margin-top:8px;
+    color:#b91c1c;
+    font-size:13px;
+}
+.quit-box button{
+    margin-top:14px;
+    background:var(--red);
+    color:white;
+    padding:12px;
+    border:none;
+    font-weight:700;
+    border-radius:8px;
+    cursor:pointer;
+    width:100%;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <div class="brand">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHZpZXdCb3g9IjAgMCA5MiA5MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSI4IiBmaWxsPSIjMDY3YTUzIi8+PC9zdmc+" />
+                <div>
+                    MANAV SAMPADA <br>
+                    <span class="sub">A HRMS Application</span>
+                </div>
+            </div>
+
+            <div class="nav">
+                <div class="item" onclick="location.href='home.html'">📊 Dashboard</div>
+
+                <div class="item active">📄 Job Management</div>
+
+                <!-- ⭐ FIXED BUTTON — NOW WORKS -->
+                <div class="item" onclick="location.href='my-profile.html'">👤 My Profile</div>
+
+                <div class="item">📅 Leave Module</div>
+                <div class="item">🗂 Appointment/Posting</div>
+                <div class="item">⭐ ACR/APAR</div>
+                <div class="item">💰 Payroll</div>
+                <div class="item">📘 Service Book</div>
+                <div class="item">📁 Documents</div>
+                <div class="item">⚙️ Settings</div>
+            </div>
+        </div>
+
+        <div class="chat">
+            <strong>Facing issues?</strong><br>
+            <span style="color:var(--muted);font-size:13px;">Talk to our HR chatbot for help.</span>
+            <button>Chat Now</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+
+            <div></div>
+
+            <div style="display:flex;align-items:center;gap:14px;">
+                <div class="search">
+                    🔍 <input placeholder="Search...">
+                </div>
+
+                <div class="icon-btn">
+                    🔔
+                    <span class="dot"></span>
+                </div>
+
+                <div class="toggle-dark" onclick="toggleDark()">🌙 Dark Mode</div>
+
+                <div class="profile">
+                    <div>
+                        <div style="font-weight:700">Jane Doe</div>
+                        <div style="font-size:12px;color:var(--muted)">Developer</div>
+                    </div>
+                    <div style="width:42px;height:42px;border-radius:50%;background:var(--panel);display:grid;place-items:center;box-shadow:var(--shadow)">
+                        👤
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Job Management</h1>
+        <div class="subtitle">View and manage your current job details and employment history.</div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <div class="tab-active">My Current Job</div>
+            <div>Job History</div>
+        </div>
+
+        <!-- JOB DETAILS -->
+        <div class="details-box">
+
+            <div class="row">
+                <div>
+                    <div class="label">Employee ID</div>
+                    <div class="value">EMP102345</div>
+                </div>
+
+                <div>
+                    <div class="label">Designation</div>
+                    <div class="value">Senior Software Developer</div>
+                </div>
+
+                <div>
+                    <div class="label">Department</div>
+                    <div class="value">Information Technology</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <div class="label">Date of Joining</div>
+                    <div class="value">15 June 2021</div>
+                </div>
+
+                <div>
+                    <div class="label">Reporting Manager</div>
+                    <div class="value">Mr. John Smith</div>
+                </div>
+
+                <div>
+                    <div class="label">Employment Type</div>
+                    <div class="value">Full-time, Permanent</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <div class="label">Office Location</div>
+                    <div class="value">Lucknow, Uttar Pradesh</div>
+                </div>
+
+                <div>
+                    <div class="label">Grade Pay</div>
+                    <div class="value">₹ 5400 (Level 9)</div>
+                </div>
+
+                <div>
+                    <div class="label">Service Status</div>
+                    <div class="value" style="color:#16a34a;">Active</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+
+            <div class="action-box">
+                <h3>Quick Actions</h3>
+                <a href="#">📄 Job Section Letter</a>
+                <a href="#">📁 All Job-Related Documents</a>
+            </div>
+
+            <div class="quit-box">
+                <h3>Quit Job</h3>
+                <p>This action is irreversible. Proceed with caution.</p>
+                <button onclick="alert('Resignation Started')">⚠ Initiate Resignation</button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+/* DARK MODE TOGGLE */
+function toggleDark(){
+    document.body.classList.toggle("dark");
+
+    // Save setting
+    if(document.body.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+    } else {
+        localStorage.setItem("theme","light");
+    }
+}
+
+/* LOAD THEME */
+window.onload = () => {
+    if(localStorage.getItem("theme")==="dark"){
+        document.body.classList.add("dark");
+    }
+}
+</script>
+
+</body>
+</html>

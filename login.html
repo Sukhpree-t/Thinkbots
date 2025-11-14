@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eHRMS Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f5fc;
+        }
+
+        /* Top Green Header */
+        .top-header {
+            background: #6fbf4b;
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .top-header img {
+            height: 45px;
+        }
+
+        /* Blue Menu Bar */
+        .menu-bar {
+            background: #004aad;
+            color: white;
+            padding: 14px 20px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-btn {
+            background: #0abb62;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        /* Main Content Layout */
+        .main {
+            display: flex;
+            padding: 20px 30px;
+        }
+
+        /* Left Section */
+        .left-section {
+            width: 65%;
+            padding-right: 25px;
+        }
+
+        .banner {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .updates {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Boxes Section */
+        .boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.07);
+        }
+
+        .box h3 {
+            margin-top: 0;
+            color: #004aad;
+        }
+
+        /* Right Login Box */
+        .right-section {
+            width: 35%;
+        }
+
+        .login-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-left: 20px;
+            margin-top: 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            background: #004aad;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            text-align: center;
+            background: #004aad;
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Green header -->
+<div class="top-header">
+    <div>
+        <strong>MANAV SAMPADA UTTAR PRADESH</strong><br>
+        A HRMS APPLICATION FOR EMPLOYEE MANAGEMENT
+    </div>
+    <img src="https://ehrms.upsdc.gov.in/Images/Web_Banner.jpg">
+</div>
+
+<!-- Blue menu bar -->
+<div class="menu-bar">
+    <div class="menu-links">
+        <a href="#">Home</a>
+        <a href="#">About eHRMS</a>
+        <a href="#">Government Orders</a>
+        <a href="#">Transfer Orders</a>
+        <a href="#">Forms/Notices</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="login-btn">eHRMS Login</div>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- Left Section -->
+    <div class="left-section">
+        <img src="https://ehrms.upsdc.gov.in/Images/Web_Banner.jpg" class="banner">
+
+        <div class="updates">
+            <h2>Latest News & Updates</h2>
+            <ul>
+                <li>New policy announcement regarding employee benefits.</li>
+                <li>Updated guidelines for provincial transfers.</li>
+                <li>Annual performance review schedule released.</li>
+                <li>Holiday calendar for 2025 now available.</li>
+            </ul>
+        </div>
+
+        <!-- Boxes -->
+        <div class="boxes">
+            <div class="box">
+                <h3>Department Section</h3>
+                Education Department<br>
+                Health Department<br>
+                Home Department<br>
+                Revenue Department
+            </div>
+
+            <div class="box">
+                <h3>Public Window</h3>
+                Fact Sheet<br>
+                Know Your Service Details<br>
+                View Office Orders
+            </div>
+
+            <div class="box">
+                <h3>Download App</h3>
+                Get it on Google Play<br>
+                Download on App Store
+            </div>
+
+            <div class="box">
+                <h3>Important Links</h3>
+                Employee Handbook<br>
+                Grievance Redressal<br>
+                Training Calendar
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Login Box -->
+    <div class="right-section">
+        <div class="login-card">
+            <h2 style="text-align:center;">eHRMS Login</h2>
+
+            <input type="text" id="userid" placeholder="Username / Employee ID">
+            <input type="password" id="password" placeholder="Password">
+
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    Disclaimer: This website is best viewed in modern browsers.
+</div>
+
+<script>
+function login() {
+    let id = document.getElementById("userid").value;
+    let pw = document.getElementById("password").value;
+
+    if (id === "" || pw === "") {
+        alert("Please enter both Username and Password");
+        return;
+    }
+
+    // Do NOT change the redirect path
+    window.location.href = "home.html";
+}
+</script>
+
+</body>
+</html>

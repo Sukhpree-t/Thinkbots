@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promotion Management</title>
+
+<style>
+/* THEME VARIABLES */
+:root {
+    --bg:#f2f4f7;
+    --panel:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --blue:#2563eb;
+    --green:#22c55e;
+    --yellow:#fbbf24;
+    --red:#ef4444;
+    --shadow:0 4px 12px rgba(0,0,0,0.07);
+    --sidebar:#ffffff;
+    --sidebar-hover:#eef2ff;
+    --sidebar-active:#e0e7ff;
+}
+
+/* DARK MODE */
+body.dark {
+    --bg:#0d1117;
+    --panel:#161b22;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+    --sidebar:#1f2937;
+    --sidebar-hover:#374151;
+    --sidebar-active:#4b5563;
+    --shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* GLOBAL */
+body {
+    margin:0;
+    font-family:Inter, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.25s;
+}
+
+.app {
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width:230px;
+    background:var(--sidebar);
+    padding:22px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.brand {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+}
+
+.logo {
+    width:46px;
+    height:46px;
+    border-radius:8px;
+    background:#0b9f66;
+}
+
+.nav .item {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:12px;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.2s;
+}
+
+.nav .item:hover {
+    background:var(--sidebar-hover);
+}
+
+.nav .active {
+    background:var(--sidebar-active);
+    color:var(--blue);
+}
+
+.icon {
+    font-size:18px;
+}
+
+/* MAIN */
+.main {
+    flex:1;
+    padding:28px;
+}
+
+/* TOP HEADER */
+.top-header {
+    font-size:15px;
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+/* PROFILE CARD */
+.profile-card {
+    background:var(--panel);
+    padding:20px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.profile-info {
+    display:flex;
+    gap:18px;
+}
+
+.profile-info img {
+    width:70px;height:70px;border-radius:50%;
+}
+
+.profile-text h2 {
+    margin:0;
+}
+
+.profile-meta {
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* TABS */
+.tabs {
+    display:flex;
+    gap:28px;
+    margin-top:30px;
+    border-bottom:2px solid #d1d5db;
+    padding-bottom:10px;
+    font-weight:600;
+}
+
+.tab-active {
+    color:var(--blue);
+    border-bottom:3px solid var(--blue);
+    padding-bottom:10px;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:24px;
+}
+
+/* BOXES */
+.box {
+    background:var(--panel);
+    padding:20px;
+    border-radius:14px;
+    box-shadow:var(--shadow);
+}
+
+.box h3 {
+    margin-bottom:16px;
+}
+
+/* TIMELINE */
+.timeline-item {
+    margin-bottom:18px;
+}
+
+.timeline-title {
+    font-weight:600;
+}
+
+.timeline-date {
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* READINESS SCORE */
+.score-circle {
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:14px solid var(--blue);
+    border-top-color:#e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    font-size:32px;
+    font-weight:700;
+}
+
+.metrics {
+    margin-top:18px;
+}
+
+.metric-row {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.metric-value {
+    font-weight:600;
+}
+
+.green {color:var(--green);}
+.red {color:var(--red);}
+.yellow {color:var(--yellow);}
+.blue {color:var(--blue);}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div>
+        <div class="brand">
+            <div class="logo"></div>
+            MANAV SAMPADA
+        </div>
+
+        <div class="nav">
+            <div class="item" onclick="location.href='home.html'">📊 Dashboard</div>
+            <div class="item" onclick="location.href='my-profile.html'">👤 My Profile</div>
+            <div class="item">📅 Leave Module</div>
+            <div class="item">📋 Appointment/Posting</div>
+            <div class="item">⭐ ACR/APAR</div>
+            <div class="item active">⬆️ Promotion Management</div>
+            <div class="item">💰 Payroll</div>
+            <div class="item">📘 Service Book</div>
+            <div class="item" onclick="location.href='job-management.html'">📄 Job Management</div>
+            <div class="item">📁 Documents</div>
+            <div class="item">⚙️ Settings</div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="top-header">Employee Management / John Doe / Promotion Management</div>
+
+    <!-- PROFILE SECTION -->
+    <div class="profile-card">
+        <div class="profile-info">
+            <img src="https://i.pravatar.cc/150?img=12">
+            <div class="profile-text">
+                <h2>John Doe</h2>
+                <div class="profile-meta">
+                    Senior Software Engineer | Employee ID: 12345 | Dept: Technology | Joined: 15 Jan 2018
+                </div>
+            </div>
+        </div>
+
+        <button style="padding:12px 22px;background:#2563eb;color:white;border:none;border-radius:10px;cursor:pointer;">
+            Nominate for Promotion
+        </button>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <div>Personal Details</div>
+        <div>Performance Reviews</div>
+        <div class="tab-active">Promotion Management</div>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+
+        <!-- LEFT — TIMELINE -->
+        <div class="box">
+            <h3>Promotion / Demotion History</h3>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Senior Software Engineer</div>
+                <div class="timeline-date">Promotion — Effective 01 Jul 2021</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Software Engineer</div>
+                <div class="timeline-date">Promotion — Effective 15 Jan 2020</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Junior Software Engineer</div>
+                <div class="timeline-date">Demotion — Effective 01 Mar 2019</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-title">Associate Software Engineer</div>
+                <div class="timeline-date">Hired — Effective 15 Jan 2018</div>
+            </div>
+        </div>
+
+        <!-- RIGHT — SCORE -->
+        <div class="box">
+            <h3>Promotion Readiness</h3>
+
+            <div class="score-circle">78</div>
+
+            <div class="metrics">
+
+                <div class="metric-row">
+                    <span>Performance Average</span>
+                    <span class="green metric-value">4.5 / 5.0</span>
+                </div>
+
+                <div class="metric-row">
+                    <span>Years in Current Role</span>
+                    <span class="yellow metric-value">2.5 / 3.0</span>
+                </div>
+
+                <div class="metric-row">
+                    <span>Competencies Met</span>
+                    <span class="blue metric-value">8 / 10</span>
+                </div>
+
+                <div class="metric-row">
+                    <span>Training Completion</span>
+                    <span class="red metric-value">65%</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
